@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+i {
+    cursor: pointer;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/*<------ HEADER STARTS--------> */
+
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin: 50px auto;
+    width: 90%;
+    box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    transition: all 500ms ease-in-out;
+    z-index: 99;
+    background-color: white;
+}
+
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    border-radius: 0px;
+}
+
+header.sticky + div {
+    padding-top: 190px;
+}
+
+div.logo img {
+    width: 150px;
+}
+
+header>div:nth-child(2)>nav>ul>li{ 
+    display: inline-block;
+    position: relative;
+}
+
+header>div:nth-child(2)>nav>ul>li {
+    padding: 25px 10px;
+    margin-inline: 10px;
+}
+
+header>div:nth-child(2)>nav>ul>li>a {
+    color: black;
+    font-size: .8rem;
+}
+
+ul.main-menu li:hover a {
+    color: orange;
+}
+
+ul.main-menu li a.active {
+    color: orange;
+}
+
+ul.submenu {
+    display: none;
+    position: absolute;
+    top: 75px;
+    width: 200px;
+    background-color: white;
+    line-height: 4;
+    text-align: center;
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+}
+
+header>div:nth-child(2)>nav>ul>li:hover ul.submenu {
+    visibility: visible;
+    z-index: 99;
+    opacity: 1;
+}
+
+header>div:nth-child(2) {
+    display: flex;
+    align-items: center;
+}
+
+div.search {
+    position: absolute;
+    left: 0;
+    bottom: -50px;
+    width: 100%;
+    transition: all 300ms ease-in;
+    transform: scaleY(0);
+    z-index: -99;
+    
+}
+
+div.search.active {
+    transform: scaleY(1);
+}
+
+div.search input {
+    font-size: 1rem;
+    width: 100%;
+    padding: 20px;
+    height: 50px;
+    border: none;
+    color: white;
+    background: linear-gradient(90deg, orangered, orange);
+}
+
+div.search input::placeholder {
+    color: white;
+    font-size: 1rem;
+}
+
+div.search input:focus {
+    outline: none;
+}
+
+div.search i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+div.icons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+div.icons a {
+    color: black;
+}
+
+div.icons i {
+    font-size: 1.8rem;
+}
+
+div.icons i:first-child {
+    font-size: 2.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.icons i:first-child span {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -30%);
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, orangered, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    /* letter-spacing: 3px; */
+}
+
+div.icons i:last-child {
+    font-size: 2rem;
+}
+
+div.icons i:last-child.active {
+    color: orange;
+    animation-name: search;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes search {
+    0% {transform: translate(10px, -15px);}
+    25% {transform: translate(-15px, 0px);}
+    50% {transform: translate(0px, 15px);}
+    75% {transform: translate(15px, 0px);}
+    100% {transform: translate(10px, -15px);}
+}
+
+ul.submenu li {
+    display: block;
+    font-size: .8rem;
+    width: 100%;
+    color: orange;
+    border-bottom: 1px solid gray;
+}
+ul.submenu li a {
+    display: block;
+    font-size: .8rem;
+    width: 100%;
+    color: orange;
+}
+
+ul.submenu li:last-child {
+    border-bottom: none;
+}
+
+ul.submenu li a:hover {
+    background-color: orange;
+    color: white;
+}
+
+div.menu {
+    display: none;
+}
+
+div.clear-cart {
+    text-align: center;
+}
+
+div.clear-cart>button {
+    background-color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+section.cart-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    padding-inline: 10vw;
+}
+
+section.cart-container>div:first-child {
+    grid-column: span 8;
+    padding: 20px;
+}
+
+section.cart-container>div:last-child {
+    grid-column: span 4;
+    padding: 20px;
+    height: fit-content;
+    line-height: 2;
+}
+
+section.cart-container>div:last-child>div button {
+    padding: 10px;
+    background: linear-gradient(90deg, orangered, orange);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+section.cart-container>div img {
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+}
+
+div.item {
+    border-bottom: 2px solid gray;
+    padding: 30px;
+}
+
+div.display-content>div a {
+    color: orange;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color:  orange;
+}
+
+div.display-content>div>div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+div.display-content>div>div:first-child>div {
+    flex: 1;
+}
+
+div.display-content>div>div:last-child a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background:  orange;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+div.display-content>div>div:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.action {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.action>div:first-child i {
+    color: orange;
+    display: flex;
+    gap: 10px;
+    font: 1.2rem;
+}
+
+div.action>div:last-child i {
+    border-radius: 10px;
+}
+
+div.price {
+    line-height: 3;
+}
+
+div.price>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+div.price p:first-child {
+    font-weight: 900;
+}
+
+div.price p:nth-child(2) {
+    text-decoration: line-through;
+    color: gray;
+}
+
+div.product-count {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+div.product-count i {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: 3px;
+}
+
+div.summary {
+    border: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 90px;
+}
+
+div.summary>div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.summary button {
+    width: 100%;
+}
+
+div.empty {
+    display: flex;
+    flex-direction: column;
+    line-height: 3;
+    text-align: center;
+}
+
+div.empty a {
+    margin: 0 auto;
+}
+
+span.cart-total {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+div.empty button {
+    padding: 10px;
+    background: linear-gradient(90deg, orangered, orange);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 500ms ease-in-out;
+}
+
+div.empty button:hover {
+    background: linear-gradient(270deg, orangered, orange);
+}
+
+@media only screen and (max-width:900px) {
+    header {
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+        border-radius: 0;
+        position: fixed;
+        overflow: hidden;
+    }
+    header.sticky + div {
+        padding: 0;
+    }
+    div.clear-cart {
+        text-align: left;
+        margin: 20vh 0 2vh 2vw;
+    }
+    section.cart-container {
+        padding-inline: 2vw;
+    }
+    div.container {
+        background-position: center;
+        background-attachment: scroll;
+        background-size: cover;
+        padding: 9vh 0;
+    }
+    header>div:nth-child(2) nav {
+        position: absolute;
+        top: 68px;
+        width: 100%;
+        right: 0;
+    }
+    ul.main-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: white;
+    }
+    ul.main-menu>li {
+        display: block;
+        width: 100%;
+    }
+    div.menu {
+        display: block;
+    }
+    header.active {
+        padding-bottom: 500px;
+    }
+    ul.submenu {
+        transition: all 500ms ease-in-out;
+        width: 100%;
+    }
+    ul.submenu>li a{
+        display: block;
+    }
+    header>div:nth-child(2)>nav>ul>li:hover ul.submenu {
+        position: static;
+    }
+    div.summary > h1 {
+        font-size: 1rem;
+    }
+    section.cart-container>div:first-child {
+        grid-column: span 12;
+    }
+    div.display-content {
+        width: 100%;
+    }
+    section.cart-container>div img {
+        width: 100px;
+    }
+    div.item {
+        padding: 5px;
+    }
+    div.item>div:first-child>div:nth-child(2) p {
+        font-size: .7rem;
+    }
+    div.summary {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.548);
+    }
+
+    div.summary>div:nth-child(2) {
+        gap: 30px;
+    }
+    div.summary>div:nth-child(2) h2,
+    div.summary>div:nth-child(2) span {
+        font-size: 1rem;
+    }
+    section.cart-container>div:last-child>div button {
+        padding: 5px;
+        font-size: 1rem;
+    }
+    div.price>div p,
+    div.price h4 {
+        font-size: .8rem;
+    }
+    div.display-content>div>div:first-child {
+        gap: 10px;
+    }
+    div.action>div:last-child i {
+        padding: 5px;
+        border-radius: 3px;
+    }
+}

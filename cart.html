@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/0a85dbbf01.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/add-to-cart.css">
+        <title>ADD TO CART</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>TIMI</h1>
+            </div>
+            <div>
+                <nav>
+                    <ul class="main-menu">
+                        <li><a href="index.html"  class="">HOME</a></li>
+                        <li><a href="">SHOP</a>
+                            <ul class="submenu">
+                                <li><a href="">SHOP CATEGORY</a></li>
+                                <li><a href="">PRODUCT DETAILS</a></li>
+                                <li><a href="">PRODUCT CHECKOUT</a></li>
+                                <li><a href="">SHOPPING CART</a></li>
+                                <li><a href="">CONFIRMATION</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">BLOG</a>
+                            <ul class="submenu">
+                                <li><a href="">BLOG</a></li>
+                                <li><a href="">BLOG DETAILS</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">PAGES</a>
+                            <ul class="submenu">
+                                <li><a href="">LOGGINGS</a></li>
+                                <li><a href="">TRACKING</a></li>
+                                <li><a href="">ELEMENT</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="icons">
+                    <a href="index.html"><i class="fa-sharp fa-solid fa-bag-shopping"><span class="cart-num"></span></i></a>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="menu">
+                        <i class="fa-solid fa-bars"></i>
+                        <!-- <i class="fa-solid fa-xmark"></i> -->
+                    </div>
+                </div>
+            </div>
+            <div class="search">
+                <input type="search" name="" id="" placeholder="Search Here">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </header>
+        <div class="clear-cart">
+            <button onclick="clearCart()">CLEAR CART</button>
+        </div>
+        <section class="cart-container">
+            
+            <div class="display-content">
+                
+            </div>
+
+            <div class="summary">
+                <h1>CART SUMMARY</h1>
+                <div>
+                    <h2>TOTAL</h2>
+                    <p><span class="cart-total">$0.00</span></p>
+                </div>
+                <div>
+                    <button>CHECKOUT <span class="total"></span></button>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <script src="./js/cart.js"></script>
+    </body>
+</html>
