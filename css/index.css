@@ -482,7 +482,7 @@ section.gadgets {
     display: flex;
     width: 100%;
     position: relative;
-    overflow-x: scroll;
+    overflow: visible;
 }
 
 section.gadgets.active {

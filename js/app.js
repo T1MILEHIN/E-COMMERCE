@@ -364,6 +364,7 @@ if (window.innerWidth < 400) {
         sliderContainer.classList.add("active");
         startX = e.pageX - sliderContainer.offsetLeft;
         scrollLeft = sliderContainer.scrollLeft;
+        category();
     })
     sliderContainer.addEventListener("mouseleave", ()=> {
         isDown = false;
