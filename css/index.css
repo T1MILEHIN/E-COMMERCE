@@ -25,7 +25,7 @@ div.container {
 }
 
 body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 html {
@@ -482,7 +482,7 @@ section.gadgets {
     display: flex;
     width: 100%;
     position: relative;
-    overflow: visible;
+    overflow-x: scroll;
 }
 
 section.gadgets.active {
@@ -615,7 +615,6 @@ body.change::after {
     left: 0;
     right: 0;
     bottom: 0;
-    /* filter: blur(3px); */
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -796,7 +795,6 @@ div.bend-down-select {
     position: relative;
     display: flex;
     width: 100%;
-
 }
 
 div.bend-down-select img {
