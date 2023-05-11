@@ -483,6 +483,7 @@ section.gadgets {
     width: 100%;
     position: relative;
     overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 section.gadgets.active {
