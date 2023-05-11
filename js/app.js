@@ -54,7 +54,7 @@ const FETCH = async function() {
     const fetchedData = await fetch('https://dummyjson.com/products?limit=0&skip=0')
     const DATA = await fetchedData.json();
     let productArr = DATA.products;
-    console.log(productArr);
+    // console.log(productArr);
     let allCartItems = JSON.parse(localStorage.getItem("cart-data")) || [];
     allCartItems = allCartItems.filter((x)=> x.item !== 0);
     let cartNum = document.querySelector(".cart-num");
@@ -324,7 +324,7 @@ function category(cur) {
     }
 }
 
-if (window.innerWidth > 400) {
+if (window.innerWidth > 601) {
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.style.display = 'none'
     function nextSlide() {
@@ -356,7 +356,7 @@ if (window.innerWidth > 400) {
 });
 }
 
-if (window.innerWidth < 400) {
+if (window.innerWidth < 600) {
     sliderContainer.style.overflow = "scroll";
     prevBtn.style.display = 'none'
     nextBtn.style.display = 'none'
@@ -384,9 +384,29 @@ if (window.innerWidth < 400) {
         const x = e.pageX - sliderContainer.offsetLeft;
         const walk = (x - startX) * 3;
         sliderContainer.scrollLeft = scrollLeft - walk;
-        let curr = Math.trunc(sliderContainer.scrollLeft / 300);
+        let curr = Math.trunc(sliderContainer.scrollLeft / 350);
+        console.log(curr);
         category(curr);
     })
+    
+    // <------------ SUBMENU ------------------> //
+    const li = document.querySelectorAll(".main-menu>li");
+
+    li.forEach((item, index) => {
+        const sub = item.querySelector(".submenu")
+        item.addEventListener("click", (e)=>{
+            e.preventDefault();
+            item.classList.toggle("active") 
+
+            if (item.classList.contains("active")) {
+                sub.style.height = `${sub.scrollHeight}px`;
+            }
+            else {
+                sub.style.height = "0px";
+            }
+            removeOpen(index);
+        }
+    )});
 }
 
 

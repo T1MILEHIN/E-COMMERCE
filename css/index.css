@@ -109,11 +109,15 @@ ul.submenu {
     transition: all 200ms ease-in-out;
 }
 
-header>div:nth-child(2)>nav>ul>li:hover ul.submenu {
-    visibility: visible;
-    z-index: 99;
-    opacity: 1;
+@media only screen and (min-width:900px) {
+    header>div:nth-child(2)>nav>ul>li:hover ul.submenu {
+        visibility: visible;
+        z-index: 99;
+        opacity: 1;
+    }
 }
+
+
 
 header>div:nth-child(2) {
     display: flex;
@@ -173,11 +177,11 @@ div.icons a {
 }
 
 div.icons i {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 div.icons i:first-child {
-    font-size: 2.5rem;
+    font-size: 2rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -196,11 +200,11 @@ div.icons i:first-child span {
     font-weight: 900;
 }
 
-div.icons i:last-child {
+div.icons i:nth-child(2) {
     font-size: 2rem;
 }
 
-div.icons i:last-child.active {
+div.icons i:nth-child(2).active {
     color: orange;
     animation-name: search;
     animation-duration: 4s;
@@ -482,7 +486,6 @@ section.gadgets {
     display: flex;
     width: 100%;
     position: relative;
-    /* overflow-x: scroll; */
 }
 
 section.gadgets.active {
@@ -1065,6 +1068,7 @@ div.copy-right {
         right: 0;
         /* box-shadow: none; */
         overflow: hidden;
+        transition: all 500ms ease-in-out;
     }
     header.sticky + div {
         padding: 0;
@@ -1078,6 +1082,7 @@ div.copy-right {
     header>div:nth-child(2) nav {
         position: absolute;
         top: 68px;
+        padding: 1vw;
         width: 100%;
         right: 0;
     }
@@ -1096,7 +1101,7 @@ div.copy-right {
         display: block;
     }
     header.active {
-        padding-bottom: 500px;
+        padding-bottom: 600px;
     }
     ul.submenu {
         transition: all 500ms ease-in-out;
@@ -1104,9 +1109,6 @@ div.copy-right {
     }
     ul.submenu>li a{
         display: block;
-    }
-    header>div:nth-child(2)>nav>ul>li:hover ul.submenu {
-        position: static;
     }
     section.landing {
         padding-block: 5vh;
@@ -1205,7 +1207,7 @@ div.copy-right {
     }
     section.product-display {
         top: 350px;
-        width: 300px;
+        width: 250px;
     }
     div.more-about {
         flex-direction: column;
@@ -1218,9 +1220,12 @@ div.copy-right {
         right: -1.5rem;
     }
     div.more-about img {
-        width: 100%;
+        max-width: 100%;
         height: 100px;
         object-fit: contain;
+    }
+    div.price {
+        padding: 5px 0;
     }
     div.more-about>div:nth-child(2) h2 {
         font-size: 1rem;
@@ -1267,7 +1272,7 @@ div.copy-right {
         padding: 10px;
     }
     div.card button i {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     div.count-down>div p  {
         font-size: 1rem;
@@ -1277,6 +1282,13 @@ div.copy-right {
     }
     section.exclusive>div {
         padding: 6vh 5vw;
+    }
+    section.exclusive>div:first-child> h1 {
+        font-size: 1.4rem;
+        margin: 2vh 0;
+    }
+    section.exclusive>div:first-child> p {
+        font-size: .8rem;
     }
     section.exclusive>div:last-child i:first-child {
         left: 10px;
@@ -1291,19 +1303,17 @@ div.copy-right {
         font-size: 1rem;
     }
     div.count-down {
-        padding: 10px;
+        padding: 5px;
     }
     div.count-down>div {
-        padding: 10px;
+        padding: 5px;
     }
     div.count-down div p {
         font-size: .9rem;
     }
-
     div.count-down div h3 {
         font-size: .9rem;
     }
-
     div.bend-down-select img {
         width: 300px;
         height: 300px;
@@ -1319,7 +1329,7 @@ div.copy-right {
     }
     div#deal-container>div:first-child {
         flex: 0 0 100%;
-        padding: 0 1vw;
+        padding: 2vh 1vw 10vh 1vw;
     }
     div#deal-container>div:first-child>div {
         flex: 0 0 100%;
@@ -1329,11 +1339,32 @@ div.copy-right {
         display: none;
     }
     footer>div:first-child {
+        padding-inline: 1vw;
+    }
+    footer>div:first-child {
         flex-direction: column;
     }
+    div.copy-right {
+        font-size: .9rem;
+        padding: 0 6vw;
+    }
+}
 
-
-    
-    
+@media only screen and (max-width: 770px) {
+    ul.main-menu {
+        line-height: 1;
+    }
+    ul.main-menu>li {
+        overflow: hidden;
+        /* border: 1px solid; */
+    }
+    ul.submenu {
+        position: relative;
+        visibility: visible;
+        z-index: 1;
+        opacity: 1;
+        top: 30px;
+        height: 0;
+    }
 }
 
