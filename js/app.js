@@ -296,8 +296,8 @@ const slideWidth = slide[0].clientWidth;
 
 sliderContainer.style.transition = `all 500ms ease-in-out`;
 sliderContainer.style.transform = `translateX(${-(slideWidth * curSlide)}px)`;
-function category() {
-    switch (curSlide) {
+function category(cur) {
+    switch (cur) {
         case 0:
             categoryDisplay.textContent = 'PHONES & LAPTOPS';
             break;
@@ -324,47 +324,51 @@ function category() {
     }
 }
 
-nextBtn.addEventListener("click", nextSlide);
-prevBtn.style.display = 'none'
-function nextSlide() {
-    if (curSlide === maxSlide) {
-        nextBtn.style.display = 'none'
-    }
-    else {
-        curSlide++
-        category();
-        if (curSlide > 0) {
-            prevBtn.style.display = 'block'
+if (window.innerWidth > 400) {
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.style.display = 'none'
+    function nextSlide() {
+        if (curSlide === maxSlide) {
+            nextBtn.style.display = 'none'
         }
+        else {
+            curSlide++
+            category(curSlide);
+            if (curSlide > 0) {
+                prevBtn.style.display = 'block'
+            }
+        }
+        sliderContainer.style.transform = `translateX(${-(slideWidth * curSlide)}px)`;
     }
-    sliderContainer.style.transform = `translateX(${-(slideWidth * curSlide)}px)`;
-}
 
-prevBtn.addEventListener("click", function () {
-    if (curSlide === 0) {
-        prevBtn.style.display = 'none'
-    }
-    else {
-        curSlide--
-        category();
-        if (curSlide < maxSlide) {
-            nextBtn.style.display = 'block'
+    prevBtn.addEventListener("click", function () {
+        if (curSlide === 0) {
+            prevBtn.style.display = 'none'
+        }
+        else {
+            curSlide--
+            category(curSlide);
+            if (curSlide < maxSlide) {
+                nextBtn.style.display = 'block'
         }
     }
     sliderContainer.style.transform = `translateX(${-(slideWidth * curSlide)}px)`;
 });
+}
 
 if (window.innerWidth < 400) {
+    sliderContainer.style.overflow = "scroll";
+    prevBtn.style.display = 'none'
+    nextBtn.style.display = 'none'
     let isDown = false;
     let startX;
     let scrollLeft;
-
+    
     sliderContainer.addEventListener("mousedown", (e) => {
         isDown = true;
         sliderContainer.classList.add("active");
         startX = e.pageX - sliderContainer.offsetLeft;
         scrollLeft = sliderContainer.scrollLeft;
-        category();
     })
     sliderContainer.addEventListener("mouseleave", ()=> {
         isDown = false;
@@ -380,7 +384,8 @@ if (window.innerWidth < 400) {
         const x = e.pageX - sliderContainer.offsetLeft;
         const walk = (x - startX) * 3;
         sliderContainer.scrollLeft = scrollLeft - walk;
-        console.log(walk);
+        let curr = Math.trunc(sliderContainer.scrollLeft / 400);
+        category(curr);
     })
 }
 
