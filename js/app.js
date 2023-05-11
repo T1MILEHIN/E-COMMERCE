@@ -384,7 +384,7 @@ if (window.innerWidth < 400) {
         const x = e.pageX - sliderContainer.offsetLeft;
         const walk = (x - startX) * 3;
         sliderContainer.scrollLeft = scrollLeft - walk;
-        let curr = Math.trunc(sliderContainer.scrollLeft / 400);
+        let curr = Math.trunc(sliderContainer.scrollLeft / 300);
         category(curr);
     })
 }
