@@ -94,7 +94,7 @@ const CART = async function() {
                         <img src=${search.images[0]} alt="">
                     </div>
                     <div>
-                        <p>${search.description}</p>
+                        <p>${window.innerWidth > 600 ? search.description : ''}</p>
                     </div>
                     <div class="price">
                         <div>

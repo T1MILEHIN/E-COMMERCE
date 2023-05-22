@@ -54,16 +54,18 @@ const FETCH = async function() {
     const fetchedData = await fetch('https://dummyjson.com/products?limit=0&skip=0')
     const DATA = await fetchedData.json();
     let productArr = DATA.products;
-    // console.log(productArr);
+
     let allCartItems = JSON.parse(localStorage.getItem("cart-data")) || [];
+
     allCartItems = allCartItems.filter((x)=> x.item !== 0);
+
     let cartNum = document.querySelector(".cart-num");
 
     cartNum.textContent = allCartItems.map((x)=> x.item).reduce((acc, cur)=> acc + cur, 0);
     productArr.forEach((items, index, arr) => {
 
         let {id, title, price, images, thumbnail, description, discountPercentage, stock} = items;
-
+        let search = allCartItems.find((x)=> x.id === id) || [];
         const productEL = document.createElement('div')
         productEL.innerHTML = `
             <div class="EACH-${id}">
@@ -92,11 +94,12 @@ const FETCH = async function() {
                         <p>VIEW MORE</p>
                     </div>
                 </div>
+                <div class= "sold-out">${search.instock === 0 ? 'SOLD OUT' : ''}</div>
             </div>
         `
 
+        console.log(search.instock);
         const wishlist = document.querySelectorAll(".fa-heart")
-
         wishlist.forEach((item, index, arr)=> {
             item.addEventListener("click", (e)=> {
                 e.stopPropagation();
@@ -187,12 +190,9 @@ const FETCH = async function() {
             plusEl.addEventListener("click", increase, true);
             function increase(e) {
                 e.stopPropagation();
-                let search = allCartItems.find((x)=> x.id === id) || [];
                 if (productValue < 10 && inStock.textContent > 0) {
                     productValue++;
                     cartValue++;
-                    stock--;
-                    // search.instock--;
                     inStock.textContent = inStock.textContent - 1;
                     numEl.innerHTML = productValue;
                 }
@@ -205,15 +205,13 @@ const FETCH = async function() {
             minus.addEventListener("click", (e) => {
                 e.stopPropagation();
                 let search = allCartItems.find((x)=> x.id === id) || [];
-                
                 if (productValue === 0) {
                     numEl.classList.toggle("active");
                 }
                 else {
                     productValue--;
                     cartValue--;
-                    stock++;
-                    inStock.textContent = stock
+                    inStock.textContent = +inStock.textContent + 1;
                     numEl.textContent = productValue;
                 }
                 totalPrice();
@@ -222,9 +220,10 @@ const FETCH = async function() {
             const exit = document.querySelector(".more-about>i");
             exit.addEventListener("click", (e) => {
                 e.stopPropagation();
+                let search = allCartItems.find((x)=> x.id === id)
                 productDisplay.innerHTML = '';
                 body.classList.remove("change");
-                inStock.textContent = inStock
+                inStock.textContent = search.instock === undefined ? stock : search.instock;
             });
             function addToCartBTN(e) {
                 e.stopPropagation();
@@ -274,11 +273,8 @@ const FETCH = async function() {
         dealContent.addEventListener("click", DISPLAY_ALL)
        
     })
-
-    
-    
-
 }
+
 FETCH();
 
 
@@ -320,6 +316,7 @@ function category(cur) {
             categoryDisplay.textContent = 'DECORATION/ORNAMENT';
             break;
         default:
+            categoryDisplay.textContent = 'UNKNOWN';
             break;
     }
 }
@@ -404,7 +401,6 @@ if (window.innerWidth < 600) {
             else {
                 sub.style.height = "0px";
             }
-            removeOpen(index);
         }
     )});
 }

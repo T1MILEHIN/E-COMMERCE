@@ -25,7 +25,7 @@ div.container {
 }
 
 body {
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 
 html {
@@ -621,6 +621,16 @@ body.change::after {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+div.sold-out {
+    background-color: transparent;
+    color: red;
+    font-weight: 900;
+    font-size: 1.5rem;
+    position: absolute;
+    letter-spacing: 1px;
+    top: 0;
+}
+
 div.more-about {
     margin: 0 auto;
     display: flex;
@@ -872,7 +882,7 @@ section.brand>div img:hover {
 }
 
 section.hot-deals {
-    padding: 10vh 6vw 25vh 6vw;
+    padding: 10vh 6vw 30vh 6vw;
 }
 
 section.hot-deals>h1 {
